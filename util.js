@@ -1,23 +1,23 @@
 module.exports.randomFrom = function (
-    list,
+    source,
     quantity = 1,
     options = {
         subtractive: true,
     }
 ){
     // Error if input is not compatiable
-    if (!Array.isArray(list))
-        throw new Error(`${list} is not an array`);
+    if (!Array.isArray(source))
+        throw new Error(`${source} is not an array`);
 
     // Error if in subtractive mode and requested quantity is larger than input
-    if (options.subtractive && quantity > list.length)
-        throw new Error(`Requested quantity ${quantity} is greater than the ${list.length} available items`);
+    if (options.subtractive && quantity > source.length)
+        throw new Error(`Requested quantity ${quantity} is greater than the ${source.length} available items`);
 
     // Return a single item in single mode (no array)
-    if (quantity === 1) return list[Math.floor(Math.random() * list.length)];
+    if (quantity === 1) return source[Math.floor(Math.random() * source.length)];
 
     // Pick random items as if from a hat
-    let availableEntries = [...list];
+    let availableEntries = [...source];
     let selectedEntries = [];
     for (let i = 0; quantity > i; i++) {
         const randomIndex = Math.floor(Math.random() * availableEntries.length);
