@@ -14,7 +14,6 @@ for (const file of commandFiles) {
 	discord.commands.set(command.data.name, command);
 };
 
-
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
@@ -24,23 +23,6 @@ for (const file of eventFiles) {
 		discord.on(event.name, (...args) => event.execute(...args));
 	}
 };
-
-
-// // Handle interactions
-// discord.on('interactionCreate', async interaction => {
-// 	if (!interaction.isCommand()) return;
-
-// 	const command = discord.commands.get(interaction.commandName);
-
-// 	if (!command) return;
-
-// 	try {
-// 		await command.execute(interaction);
-// 	} catch (error) {
-// 		console.error(error);
-// 		await interaction.reply({ content: "I'm sorry, I'm not feeling quite myself", ephemeral: true });
-// 	}
-// });
 
 // Attempt login
 discord.login(bot.token);

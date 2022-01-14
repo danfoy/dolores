@@ -1,7 +1,8 @@
 module.exports = {
 	name: 'ready',
 	once: true,
-	execute(discord) {
-		console.log(`Logged into Discord as ${discord.user.tag} (${discord.user.id})`);
+	execute(client) {
+		console.log(`Logged into Discord as ${client.user.tag} (${client.user.id})`);
+		require('../deploy-commands');
 	}
 };

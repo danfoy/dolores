@@ -15,5 +15,5 @@ for (const file of commandFiles) {
 // Deploy the commands
 const rest = new REST({ version: '9' }).setToken(bot.token);
 rest.put(Routes.applicationGuildCommands(bot.id, servers[1].id), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
+	.then(() => console.log('Registered slash commands on staging server.'))
 	.catch(error => console.error(error));
