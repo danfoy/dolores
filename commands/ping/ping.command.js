@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { randomFrom } = require('../util');
+const { randomFrom } = require('../../util');
 
 const quotes = [
     `Have you ever seen anything so full of splendour?`,
@@ -21,7 +21,7 @@ const quotes = [
 ]
 
 module.exports = {
-	data: new SlashCommandBuilder()
+	meta: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Request a response'),
 	async execute(interaction) {
