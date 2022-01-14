@@ -1,6 +1,11 @@
 const glob = require('glob');
 const { Client, Collection, Intents } = require('discord.js');
 const { bot } = require('./config.json');
+const { randomFrom } = require('./util');
+const pingQuotes = require('./commands/ping/quotes');
+
+// Send a random ping quote to announce startup
+console.log(randomFrom(pingQuotes));
 
 // Create the discordjs client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
