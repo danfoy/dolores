@@ -1,6 +1,5 @@
 const ApexPlaylist = require('./ApexPlaylist');
-const seasons = require('./apex.json').seasons;
-const { maps, mapDurations, startDate } = seasons[seasons.length - 1];
+const apexData = require('./apex.json');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -9,8 +8,8 @@ module.exports = {
         description: 'Get the current map schedule for Apex Legends'
     },
 	async execute(interaction) {
-
-		const battleRoyale = new ApexPlaylist(maps, mapDurations, startDate);
+		const seasonData = apexData.seasons[apexData.seasons.length - 1];
+		const battleRoyale = new ApexPlaylist(seasonData);
 
 		const current = battleRoyale.currentMap;
 		const next = battleRoyale.nextMap;

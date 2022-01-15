@@ -1,8 +1,8 @@
 module.exports = class ApexPlaylist {
-    constructor (maps, durations, startTime) {
-        this.maps = maps;
-        this.durations = durations;
-        this.startTime = new Date(startTime);
+    constructor (seasonData) {
+        this.maps = seasonData.maps;
+        this.durations = seasonData.mapDurations;
+        this.startTime = new Date(seasonData.startTime);
         this.rotations = this.getRotations();
     };
 
