@@ -19,7 +19,7 @@ module.exports.registerCommands = async function(client) {
 
     // Transform data to required formats
     const commands = commandPaths.map(command => command = require(command));
-    const commandData = commands.map(command => command = command.meta.toJSON());
+    const commandData = commands.map(command => command = command.meta);
     const commandsCollection = new Collection();
     commands.forEach(command => commandsCollection.set(command.meta.name, command));
 
