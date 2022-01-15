@@ -64,7 +64,7 @@ module.exports = class ApexPlaylist {
     getPlaylistIndex(target = new Date()) {
         const offset = this.getOffset(target);
         return this.rotations.findIndex( (map) => {
-            return map.offset + map.duration >= offset
+            return map.offset + map.duration > offset
         });
     };
 
