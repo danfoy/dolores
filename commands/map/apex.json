@@ -1,0 +1,14 @@
+{
+    "seasons": [
+        {
+            "id": 11,
+            "name": "Escape",
+            "maps": [
+                "Storm Point",
+                "World's Edge"
+            ],
+            "mapDurations": [90, 60, 60, 120, 90, 120],
+            "startDate": "2022-01-11T06:00:00Z"
+        }
+    ]
+}
