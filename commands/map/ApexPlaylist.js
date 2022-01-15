@@ -3,12 +3,16 @@ module.exports = class ApexPlaylist {
         this.maps = seasonData.maps;
         this.durations = seasonData.mapDurations;
         this.startTime = new Date(seasonData.startTime);
+        this.endTime = new Date(seasonData.endTime);
         this.rotations = this.getRotations();
     };
 
     get currentMap() {
-        const thisRotation = this.rotations[this.getPlaylistIndex()];
-        const nextRotation = this.rotations[this.getPlaylistIndex() + 1];
+        const currentIndex = this.getPlaylistIndex();
+        const thisRotation = this.rotations[currentIndex];
+        const nextRotation = currentIndex + 1 === this.rotations.length
+            ? this.rotations[0]
+            : this.rotations[currentIndex + 1];
         return {
             map: thisRotation.map,
             duration: thisRotation.duration,
