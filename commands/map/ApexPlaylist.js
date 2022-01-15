@@ -60,19 +60,19 @@ module.exports = class ApexPlaylist {
         // times are converted to minutes
         const targetTime = (target.getTime() / 1000 / 60);
         const startTime = (this.startTime.getTime() / 1000 / 60);
-        return Math.floor(
-            ( ( targetTime - startTime ) % this.playlistTotalDuration )
-        );
+        const offset = Math.floor(( ( targetTime - startTime ) % this.playlistTotalDuration ));
+        if (Number.isNaN(offset)) throw new Error(`Unable to get requested offset; got '${offset}'`);
+        return offset;
     };
 
     getPlaylistIndex(target = new Date()) {
         const offset = this.getOffset(target);
-        return this.rotations.findIndex( (map) => {
-            return map.offset + map.duration > offset
-        });
+        return this.rotations.findIndex(map => map.offset + map.duration > offset);
     };
 
     getMapByDate(target = new Date()) {
+        if (!target.getTime()) throw new Error(`Expected an instance of Date, got ${target}`);
+        if (target > this.endTime) throw new Error('Requested date is out of bounds for this season');
         return this.rotations[this.getPlaylistIndex(target)].map;
     };
 };
