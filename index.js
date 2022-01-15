@@ -10,11 +10,16 @@ const pingQuotes = require('./commands/ping/quotes');
 	console.log(randomFrom(pingQuotes));
 
 	// Create the discordjs client instance
-	const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+	const client = new Client({
+		intents: [
+			Intents.FLAGS.GUILDS,
+			Intents.FLAGS.GUILD_MESSAGES
+		]
+	});
 
 	await registerCommands(client);
 	await registerEvents(client);
 
 	// Attempt login
-	client.login(bot.token);
+	await client.login(bot.token);
 })();
