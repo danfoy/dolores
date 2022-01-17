@@ -22,7 +22,6 @@ module.exports.isDate = isDate;
 function parseDate(target) {
     if (!target) throw new Error(`Target date is required and not provided`);
     const newDate = new Date(target);
-    console.log('New date: ' + newDate);
     if (!isDate(newDate)) throw new Error(`Unable to parse date from ${target}`);
     return newDate;
 };
@@ -44,7 +43,20 @@ function isParseableDate(target) {
 };
 module.exports.isParseableDate = isParseableDate;
 
-module.exports.randomFrom = function (
+/**
+ * Select [quantity] items from [array]. By default returns a string in single
+ * mode, unless {array: true} is passed in the options object. Doesn't allow
+ * duplicates unless {subtractive: false} is passed in the options object.
+ *
+ * @param {array} source
+ * @param {number} [quantity=1]
+ * @param {boolean} [options={
+ *         subtractive: true,
+ *         array: false
+ *     }]
+ * @returns {string|array}
+ */
+function randomFrom(
     source,
     quantity = 1,
     options = {
@@ -75,3 +87,4 @@ module.exports.randomFrom = function (
     return selectedEntries;
 
 };
+module.exports.randomFrom = randomFrom;

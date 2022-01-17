@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-describe('isDate(target)', function() {
+describe('util.isDate(target)', function() {
     const { isDate } = require('../util');
 
     it('returns true when target is an instance of Date', function() {
@@ -14,7 +14,7 @@ describe('isDate(target)', function() {
     });
 });
 
-describe('parseDate(target)', function() {
+describe('util.parseDate(target)', function() {
     const { parseDate } = require('../util');
 
     it('throws if target is not supplied', function() {
@@ -36,7 +36,7 @@ describe('parseDate(target)', function() {
     });
 });
 
-describe('isParseableDate(target)', function() {
+describe('util.isParseableDate(target)', function() {
     const { isParseableDate } = require('../util');
 
     it('returns true when passed a date', function() {
@@ -52,7 +52,7 @@ describe('isParseableDate(target)', function() {
     });
 });
 
-describe('randomFrom(list, quantity, options)', function() {
+describe('util.randomFrom(list, quantity, options)', function() {
 
     const { randomFrom } = require('../util');
 
@@ -80,10 +80,10 @@ describe('randomFrom(list, quantity, options)', function() {
             expect(randomFrom([1,2], 25, {subtractive: false})).to.not.include(undefined);
         });
 
-        it("doesn't return duplices in subtractive mode", function() {
+        it("doesn't return duplicates in subtractive mode", function() {
             function checkDuplicates() {
                 const results = [];
-                for (let i = 0; i < 100000; i++) {
+                for (let i = 0; i < 100; i++) {
                     results.push(randomFrom([1, 2, 3], 2))
                 };
                 return results.filter(result => result[0] == result[1]);
@@ -92,7 +92,7 @@ describe('randomFrom(list, quantity, options)', function() {
             expect(checkDuplicates()).to.be.empty;
         });
 
-        it('throwns when subtractive and requesting > input size', function() {
+        it('throws when subtractive and requesting > input size', function() {
             expect(()=>randomFrom(['item1', 'item2'], 2, {subtractive: true})).to.throw;
         });
     });
