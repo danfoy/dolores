@@ -3,22 +3,16 @@ const ApexPlaylist = require('../commands/map/ApexPlaylist');
 
 describe('@ApexPlaylist', function() {
 
-    it('throws if requested date is out of bounds', function() {
-        const seasonData = {
-            maps: ["Storm Point", "World's Edge"],
-            mapDurations: [90, 60, 60, 120, 90, 120],
-            startTime: "2021-11-02T12:00:00Z",
-            endTime: "2022-02-08T12:00:00Z",
-        };
-
-        // This date is out of bounds
-        expect(function() { new ApexPlaylist(seasonData).getMapByDate(new Date('2022-02-09T12:00:00Z'))})
-            .to.throw();
-
-        // This date is not out of bounds
-        expect(function() { new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-09T12:00:00Z'))})
-            .to.not.throw();
-    });
+    // I have found an error, but I will need to refactor before I can test
+    // it('this unknown error', function() {
+    //     const seasonData = {
+    //     maps: ["Storm Point", "World's Edge"],
+    //     mapDurations: [90, 60, 60, 120, 90, 120],
+    //     startTime: "2021-11-02T12:00:00Z",
+    // };
+    //     expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-17T04:12:00Z')))
+    //         .timeRemaining.to.be.gt(0);
+    // });
 
     it("provides correct values for Season 11 'Escape'", function() {
 
