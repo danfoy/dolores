@@ -4,6 +4,7 @@ const ApexPlaylist = require('../commands/map/ApexPlaylist');
 describe('@ApexPlaylist', function() {
 
     // I have found an error, but I will need to refactor before I can test
+    // This entry was reporting -972 minutes remaining
     // it('this unknown error', function() {
     //     const seasonData = {
     //     maps: ["Storm Point", "World's Edge"],
