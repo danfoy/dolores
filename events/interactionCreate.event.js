@@ -23,7 +23,7 @@ module.exports = {
         try {
             await command.execute(interaction);
         } catch (error) {
-            console.error(`Error processing ${commandName}: ` + error);
+            console.error(`Error processing command [${commandName}]:`, error);
             await interaction.reply({
                 content: "I'm sorry, I'm not feeling quite myself",
                 ephemeral: true
