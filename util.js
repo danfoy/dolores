@@ -1,8 +1,48 @@
-module.exports.isDate = function(target) {
+/**
+ * Determines whether the input is an instance of Date.
+ *
+ * @param {*} target
+ * @returns {boolean}
+ */
+function isDate(target) {
     return target && // Check date is truthy
         Object.prototype.toString.call(target) === '[object Date]' && // Check target is date object
-        !Number.isNaN(target) // Check target is not 'inavlid date';
+        target != 'Invalid Date' // Check target is not 'inavlid date';
 };
+module.exports.isDate = isDate;
+
+/**
+ * Get a date object or an error. Returns the input if it's already an instance
+ * of Date. Attempts to create a new Date object from the supplied argument and
+ * returns a new Date instance on success or an Error on failure.
+ *
+ * @param {Date|ISO date string} target
+ * @returns {Date|Error}
+ */
+function parseDate(target) {
+    if (!target) throw new Error(`Target date is required and not provided`);
+    const newDate = new Date(target);
+    console.log('New date: ' + newDate);
+    if (!isDate(newDate)) throw new Error(`Unable to parse date from ${target}`);
+    return newDate;
+};
+module.exports.parseDate = parseDate
+
+/**
+ * Determine whether it's possible to parse a date from the provided input
+ *
+ * @param {*} target
+ * @returns {boolean}
+ */
+function isParseableDate(target) {
+    try {
+        parseDate(target);
+        return true;
+    } catch (error) {
+        return false;
+    }
+};
+module.exports.isParseableDate = isParseableDate;
 
 module.exports.randomFrom = function (
     source,

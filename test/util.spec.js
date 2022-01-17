@@ -1,5 +1,57 @@
 const { expect } = require('chai');
 
+describe('isDate(target)', function() {
+    const { isDate } = require('../util');
+
+    it('returns true when target is an instance of Date', function() {
+        expect(isDate(new Date())).to.be.true;
+    });
+
+    it('returns false when the target is not an instance of Date', function() {
+        expect(isDate('foo')).to.be.false;
+        expect(isDate(12)).to.be.false;
+        expect(isDate('2022-01-11T12:00:00Z')).to.be.false;
+    });
+});
+
+describe('parseDate(target)', function() {
+    const { parseDate } = require('../util');
+
+    it('throws if target is not supplied', function() {
+        expect(()=>parseDate()).to.throw;
+    });
+
+    it('throws if the target is an invalid date ISO string', function() {
+        expect(()=>parseDate('foo')).to.throw;
+        expect(()=>parseDate('2022-13-11T12:00:00Z')).to.throw;
+    });
+
+    it('returns the target if it is already an instance of Date', function() {
+        const dateExample = new Date();
+        expect(parseDate(dateExample)).to.deep.equal(dateExample);
+    });
+
+    it('returns an instance of Date if target is a valid date ISO string', function() {
+        expect(parseDate('2022-01-11T12:00:00Z').getMonth()).to.equal(0);
+    });
+});
+
+describe('isParseableDate(target)', function() {
+    const { isParseableDate } = require('../util');
+
+    it('returns true when passed a date', function() {
+        expect(isParseableDate(new Date())).to.be.true;
+    });
+
+    it('returns true when passed an ISO date string', function() {
+        expect(isParseableDate('2022-01-11T12:00:00Z')).to.be.true;
+    });
+
+    it('returns false when passed an invalid ISO date string', function() {
+        expect(isParseableDate('foo')).to.be.false;
+    });
+});
+
 describe('randomFrom(list, quantity, options)', function() {
 
     const { randomFrom } = require('../util');
