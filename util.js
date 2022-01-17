@@ -1,3 +1,9 @@
+module.exports.isDate = function(target) {
+    return target && // Check date is truthy
+        Object.prototype.toString.call(target) === '[object Date]' && // Check target is date object
+        !Number.isNaN(target) // Check target is not 'inavlid date';
+};
+
 module.exports.randomFrom = function (
     source,
     quantity = 1,
