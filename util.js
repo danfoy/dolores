@@ -3,6 +3,7 @@ module.exports.randomFrom = function (
     quantity = 1,
     options = {
         subtractive: true,
+        array: false
     }
 ){
     // Error if input is not compatiable
@@ -14,7 +15,8 @@ module.exports.randomFrom = function (
         throw new Error(`Requested quantity ${quantity} is greater than the ${source.length} available items`);
 
     // Return a single item in single mode (no array)
-    if (quantity === 1) return source[Math.floor(Math.random() * source.length)];
+    if (quantity === 1 && !options.array)
+        return source[Math.floor(Math.random() * source.length)];
 
     // Pick random items as if from a hat
     let availableEntries = [...source];
