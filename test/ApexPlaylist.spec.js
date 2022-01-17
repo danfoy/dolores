@@ -25,42 +25,42 @@ describe('@ApexPlaylist', function() {
         };
 
         // Exactly on rotation
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T12:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T12:00:00Z'))
         .to.equal("World's Edge");
 
         // Half an hour into a map rotation
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T12:30:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T12:30:00Z'))
             .to.equal("World's Edge");
 
         // Dates from a day manually tracking rotations
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T13:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T13:00:00Z'))
             .to.equal("Storm Point");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T15:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T15:00:00Z'))
             .to.equal("World's Edge");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T17:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T17:00:00Z'))
             .to.equal("Storm Point");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T18:30:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T18:30:00Z'))
             .to.equal("World's Edge");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T20:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T20:00:00Z'))
             .to.equal("Storm Point");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-11T22:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-11T22:00:00Z'))
             .to.equal("World's Edge");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-12T00:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-12T00:00:00Z'))
             .to.equal("Storm Point");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-02-11T01:30:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-02-11T01:30:00Z'))
             .to.equal("World's Edge");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-12T03:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-01-12T03:00:00Z'))
             .to.equal("Storm Point");
 
-        expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-02-11T04:00:00Z')))
+        expect(new ApexPlaylist(seasonData).getMapByDate('2022-02-11T04:00:00Z'))
             .to.equal("World's Edge");
     });
 
@@ -85,11 +85,11 @@ describe('@ApexPlaylist', function() {
             };
 
             // This date is out of bounds
-            expect(function() { new ApexPlaylist(seasonData).getMapByDate(new Date('2022-02-09T12:00:00Z'))})
+            expect(function() { new ApexPlaylist(seasonData).getMapByDate('2022-02-09T12:00:00Z')})
                 .to.throw();
 
             // This date is not out of bounds
-            expect(function() { new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-09T12:00:00Z'))})
+            expect(function() { new ApexPlaylist(seasonData).getMapByDate('2022-01-09T12:00:00Z')})
                 .to.not.throw();
         });
 
