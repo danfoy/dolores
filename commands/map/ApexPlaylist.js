@@ -1,3 +1,5 @@
+const { isDate } = require('../../util');
+
 module.exports = class ApexPlaylist {
     constructor (seasonData) {
         this.maps = seasonData.maps;
@@ -70,8 +72,10 @@ module.exports = class ApexPlaylist {
         return this.rotations.findIndex(map => map.offset + map.duration > offset);
     };
 
-    getMapByDate(target = new Date()) {
-        if (!target.getTime()) throw new Error(`Expected an instance of Date, got ${target}`);
+    getMapByDate(target) {
+        if (!target) throw new Error(`Target date not provided`);
+        if (!isDate(target)) target = new Date(target);
+        if (!isDate(target)) throw new Error(`Expected an instance of Date, got ${target}`);
         if (target > this.endTime) throw new Error('Requested date is out of bounds for this season');
         return this.rotations[this.getPlaylistIndex(target)].map;
     };

@@ -69,4 +69,44 @@ describe('@ApexPlaylist', function() {
             .to.equal("World's Edge");
     });
 
+    describe('.getMapByDate(target)', function() {
+        const seasonData = {
+            maps: ["Storm Point", "World's Edge"],
+            mapDurations: [90, 60, 60, 120, 90, 120],
+            startTime: "2021-11-02T12:00:00Z",
+        };
+
+        it('throws if date not provided', function() {
+            expect(()=>new ApexPlaylist(seasonData).getMapByDate())
+                .to.throw;
+        });
+
+        it('throws if requested date is out of bounds', function() {
+            const seasonData = {
+                maps: ["Storm Point", "World's Edge"],
+                mapDurations: [90, 60, 60, 120, 90, 120],
+                startTime: "2021-11-02T12:00:00Z",
+                endTime: "2022-02-08T12:00:00Z",
+            };
+
+            // This date is out of bounds
+            expect(function() { new ApexPlaylist(seasonData).getMapByDate(new Date('2022-02-09T12:00:00Z'))})
+                .to.throw();
+
+            // This date is not out of bounds
+            expect(function() { new ApexPlaylist(seasonData).getMapByDate(new Date('2022-01-09T12:00:00Z'))})
+                .to.not.throw();
+        });
+
+        it('accepts a Date object as a parameter', function() {
+            expect(new ApexPlaylist(seasonData).getMapByDate(new Date('2022-02-11T04:00:00Z')))
+            .to.equal("World's Edge");
+        });
+
+        it('accepts an ISO date string as a parameter', function() {
+            expect(new ApexPlaylist(seasonData).getMapByDate('2022-02-11T04:00:00Z'))
+            .to.equal("World's Edge");
+        });
+    });
+
 });
