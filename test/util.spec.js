@@ -27,6 +27,19 @@ describe('randomFrom(list, quantity, options)', function() {
             expect(randomFrom([1,2], 25, {subtractive: false})).to.include.members([1,2]);
             expect(randomFrom([1,2], 25, {subtractive: false})).to.not.include(undefined);
         });
+
+        it("doesn't return duplices in subtractive mode", function() {
+            function checkDuplicates() {
+                const results = [];
+                for (let i = 0; i < 100000; i++) {
+                    results.push(randomFrom([1, 2, 3], 2))
+                };
+                return results.filter(result => result[0] == result[1]);
+            };
+
+            expect(checkDuplicates()).to.be.empty;
+        });
+
         it('throwns when subtractive and requesting > input size', function() {
             expect(()=>randomFrom(['item1', 'item2'], 2, {subtractive: true})).to.throw;
         });
