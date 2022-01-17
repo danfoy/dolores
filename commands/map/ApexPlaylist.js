@@ -73,9 +73,9 @@ module.exports = class ApexPlaylist {
     };
 
     getMapByDate(target) {
-        if (!target) throw new Error(`Target date not provided`);
+        if (!target) throw new Error(`Target date is required and not provided`);
         if (!isDate(target)) target = new Date(target);
-        if (!isDate(target)) throw new Error(`Expected an instance of Date, got ${target}`);
+        if (!isDate(target)) throw new Error(`Unable to parse date from ${target}`);
         if (target > this.endTime) throw new Error('Requested date is out of bounds for this season');
         return this.rotations[this.getPlaylistIndex(target)].map;
     };
