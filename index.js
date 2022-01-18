@@ -21,5 +21,11 @@ const pingQuotes = require('./commands/ping/quotes');
 	await registerEvents(client);
 
 	// Attempt login
-	await client.login(bot.token);
+	try {
+		await client.login(bot.token);
+	} catch (error) {
+		console.error('Discord login failed:', error)
+		throw new Error('Discord login failed');
+	};
+
 })();
