@@ -1,4 +1,4 @@
-const ApexPlaylist = require('./ApexPlaylist');
+const ApexSeason = require('./ApexSeason');
 const apexData = require('./apex.json');
 const { MessageEmbed } = require('discord.js');
 
@@ -9,7 +9,7 @@ module.exports = {
     },
 	async execute(interaction) {
 		const seasonData = apexData.seasons[apexData.seasons.length - 1];
-		const battleRoyale = new ApexPlaylist(seasonData);
+		const battleRoyale = new ApexSeason(seasonData);
 
 		const current = battleRoyale.currentMap;
 		const next = battleRoyale.nextMap;
