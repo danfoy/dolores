@@ -27,8 +27,9 @@ describe('util.parseDate(target)', function() {
     });
 
     it('returns the target if it is already an instance of Date', function() {
-        const dateExample = new Date();
-        expect(parseDate(dateExample)).to.deep.equal(dateExample);
+        const dateExample = new Date('2021-01-21T03:00:00Z');
+        const dateCopy = new Date('2021-01-21T03:00:00Z');
+        expect(parseDate(dateExample)).to.deep.equal(dateCopy);
     });
 
     it('returns an instance of Date if target is a valid date ISO string', function() {

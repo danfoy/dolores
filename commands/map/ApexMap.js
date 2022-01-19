@@ -1,8 +1,8 @@
 class ApexMap {
-    constructor(offset, map, duration) {
-        this.offset = offset;
+    constructor(map, duration, offset) {
         this.map = map;
         this.duration = duration;
+        this.offset = offset;
     };
 };
 

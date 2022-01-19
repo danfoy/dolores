@@ -21,6 +21,7 @@ module.exports.isDate = isDate;
  */
 function parseDate(target) {
     if (!target) throw new Error(`Target date is required and not provided`);
+    if(isDate(target)) return target;
     const newDate = new Date(target);
     if (!isDate(newDate)) throw new Error(`Unable to parse date from ${target}`);
     return newDate;

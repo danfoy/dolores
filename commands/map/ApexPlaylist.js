@@ -12,21 +12,21 @@ class ApexPlaylist {
      * @param {array} durations
      * @memberof RotationsList
      */
-    constructor(maps, durations) {
-        if (!Array.isArray(maps) && !Array.isArray(durations))
-            throw new Error('Both arguments must be Arrays');
+    constructor(season) {
+        if(!season.maps && !season.mapDurations)
+            throw new Error('Requires maps and mapDurations properties from ApexSeason');
+        const { maps, mapDurations } = season;
         let timeAccumulator = 0;
         let rotations = [];
-        durations.forEach( (duration) => {
+        mapDurations.forEach( (duration) => {
             maps.forEach( (map) => {
-                const thisRotation = new ApexMap(timeAccumulator, map, duration)
+                const thisRotation = new ApexMap(map, duration, timeAccumulator)
                 timeAccumulator += duration;
                 rotations.push(thisRotation);
             });
         });
-
         return rotations;
-    }
+    };
 };
 
 module.exports = ApexPlaylist;
