@@ -24,7 +24,11 @@ const pingQuotes = require('./commands/ping/quotes');
 	try {
 		await client.login(bot.token);
 	} catch (error) {
-		console.error('Discord login failed:', error)
+		console.error('Discord login failed:', error);
+
+		// Throw rather than `process.exit(1)` is deliberate
+		// Exiting causes nodemon (development) and systemd (production) to
+		// reload, which risks spamming the API with login attemps.
 		throw new Error('Discord login failed');
 	};
 
