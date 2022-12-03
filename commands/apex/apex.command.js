@@ -9,9 +9,11 @@ module.exports = {
             .setName('size')
             .setDescription('Number of legends to generate')
             .setRequired(true)
-            .addChoice('Solo', 1)
-            .addChoice('Duo', 2)
-            .addChoice('Squad', 3)
+            .addChoices(
+				{ name: 'Solo', value: 1 },
+				{ name: 'Duo', value: 2 },
+				{ name: 'Squad', value: 3 },
+			)
         )
         .addUserOption(option => option
             .setName('teammate1')

@@ -1,7 +1,11 @@
 const SquadMember = require('./SquadMember');
 const { randomFrom } = require('../../util');
 const { legends } = require('./legends.json');
-const squadColours = ['#d78d18', '#31a1a0', '#66a103'];
+
+// Squad colours are provided as HEX codes for easy colour matching.
+// They are then converted to an integer to comply with the Discord API v10+
+const squadColours = ['d78d18', '31a1a0', '66a103']
+    .map(colour => parseInt(colour, 16));
 
 module.exports = class SquadEmbed {
     constructor(interaction) {

@@ -1,4 +1,4 @@
-const { Client, Intents } = require('discord.js');
+const { Client, GatewayIntentBits, Partials } = require('discord.js');
 const { bot } = require('./config.json');
 const { randomFrom } = require('./util');
 const { registerCommands } = require('./commands');
@@ -12,8 +12,8 @@ const pingQuotes = require('./commands/ping/quotes');
 	// Create the discordjs client instance
 	const client = new Client({
 		intents: [
-			Intents.FLAGS.GUILDS,
-			Intents.FLAGS.GUILD_MESSAGES
+			GatewayIntentBits.Guilds,
+			GatewayIntentBits.GuildMessages,
 		]
 	});
 

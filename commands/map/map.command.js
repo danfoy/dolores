@@ -1,5 +1,5 @@
 const apex = require('apexobj');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	meta: {
@@ -7,13 +7,16 @@ module.exports = {
         description: 'Get the current map schedule for Apex Legends'
     },
 	async execute(interaction) {
+
+		if (!apex.currentSeason) return await interaction.reply({content: 'Sorry, no data for the current season', ephemeral: true});
+
 		const battleRoyale = apex.currentSeason.unranked.battleRoyale;
 		console.log(battleRoyale.currentMap);
 
 		const current = battleRoyale.currentMap;
 		const next = battleRoyale.nextMap;
 
-		const response = new MessageEmbed({
+		const response = new EmbedBuilder({
 			title: `Current Map: ${current.map}`,
 			description: `*${current.timeRemaining / 60} minutes remaining*`,
 			footer: {
