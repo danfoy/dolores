@@ -8,7 +8,8 @@ module.exports = {
     },
 	async execute(interaction) {
 
-		if (!apex.currentSeason) return await interaction.reply({content: 'Sorry, no data for the current season', ephemeral: true});
+		// if (!apex.currentSeason) return await interaction.reply({content: 'Sorry, no data for the current season', ephemeral: true});
+		if (!apex.currentSeason) throw new Error('No season data');
 
 		const battleRoyale = apex.currentSeason.unranked.battleRoyale;
 		console.log(battleRoyale.currentMap);
