@@ -16,8 +16,8 @@ module.exports.registerEvents = async function(client) {
     const events = eventFiles.map(event => event = require(event));
     const descriptor = events.length === 1 ? 'event handler' : 'event handlers';
     console.log(
-        `Found ${events.length} ${descriptor}: ` +
-        `${events.map(event => event = event.name).join(', ')}`
+        `Found ${events.length} ${descriptor}:` +
+        `\t${events.map(event => event = `[${event.name}]`).join(', ')}`
     );
 
     // Attach listeners to client

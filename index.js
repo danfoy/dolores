@@ -7,7 +7,7 @@ const pingQuotes = require('./commands/ping/quotes');
 
 (async function main() {
 	// Send a random ping quote to announce startup
-	console.log(randomFrom(pingQuotes));
+	console.log(`\n${randomFrom(pingQuotes)}\n`);
 
 	// Create the discordjs client instance
 	const client = new Client({

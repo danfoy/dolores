@@ -4,7 +4,7 @@ module.exports = {
 	name: 'ready',
 	once: true,
 	async execute(client) {
-		console.log(`Logged into Discord as ${client.user.tag} (${client.user.id})`);
-		console.log('Waiting for events...');
+		console.log(`\nLogged into Discord as ${client.user.tag} (${client.user.id})`);
+		console.info('Waiting for events...\n');
 	}
 };

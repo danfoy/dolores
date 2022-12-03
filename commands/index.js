@@ -5,6 +5,8 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { bot, servers } = require('../config.json');
 
+const rest = new REST({ version: '9' }).setToken(bot.token);
+
 /**
  * Attaches command files to the passed-in discord.js Client instance, and
  * sends a PUT request to the Discord API to register slash commands.
@@ -26,16 +28,16 @@ module.exports.registerCommands = async function(client) {
     // Attach commands to client object
     client.commands = commandsCollection;
     if (client.commands.size === 0) throw new Error('Unable to load command files onto client');
-    console.log(
-        `Loaded ${client.commands.size} ${client.commands.size === 1 ? 'command' : 'commands'} onto discordjs client:` +
-        ` ${client.commands.map(cmd => cmd = cmd.meta.name).join(', ')}`
-    );
 
     // Deploy the commands to the Discord API via REST
-    const rest = new REST({ version: '9' }).setToken(bot.token);
-    await rest.put(Routes.applicationGuildCommands(bot.id, servers[1].id), { body: commandData })
-    console.log(
-        `Registered ${commandData.length} ${commandData.length === 1 ? 'slash command' : 'slash commands'} ` +
-        `with the Discord REST API`
-    );
+    try {
+        await rest.put(Routes.applicationGuildCommands(bot.id, servers[1].id), { body: commandData })
+        console.log(
+            `Registered ${client.commands.size} ${client.commands.size === 1 ? 'command' : 'commands'}:` +
+            `\t${client.commands.map(cmd => cmd = `[${cmd.meta.name}]`).join(', ')}`
+        );
+    } catch (error) {
+        console.error('Unable to register commands via REST API:', error);
+    };
+
 };

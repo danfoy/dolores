@@ -10,7 +10,7 @@ async function handleCommandError(interaction, error) {
     // Log the error to the console, with trace
     console.error(error);
     console.info(
-        `[${interaction.commandName}] command error thrown ` +
+        `[${interaction.commandName}]\tcommand error thrown ` +
         `by ${interaction.user.tag} in ` +
         `${interaction.guild.name}#${interaction.channel.name}`
         );
@@ -49,7 +49,7 @@ module.exports = {
         try {
             await command.execute(interaction);
             console.log(
-                `[${interaction.commandName}] command executed by ` +
+                `[${interaction.commandName}]\tcommand executed by ` +
                 `${interaction.user.tag} in ` +
                 `${interaction.guild.name}#${interaction.channel.name}`
             );
