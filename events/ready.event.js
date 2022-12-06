@@ -1,4 +1,3 @@
-const { deployCommands } = require('../util');
 
 module.exports = {
 	name: 'ready',
