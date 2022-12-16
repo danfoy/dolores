@@ -1,5 +1,5 @@
 const { servers } = require('../config.json');
-const LoginEmbed = require('./LoginEmbed');
+const LoginEmbed = require('../embeds/LoginEmbed');
 
 module.exports = {
     name: 'ready',

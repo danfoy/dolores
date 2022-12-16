@@ -1,6 +1,6 @@
-const SquadMember = require('./SquadMember');
-const { randomFrom } = require('../../util');
-const { legends } = require('./legends.json');
+const SquadMember = require('../commands/apex/SquadMember');
+const { randomFrom } = require('../util');
+const { legends } = require('../commands/apex/legends.json');
 
 // Squad colours are provided as HEX codes for easy colour matching.
 // They are then converted to an integer to comply with the Discord API v10+

@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const SquadEmbed = require('./SquadEmbed');
+const SquadEmbed = require('../../embeds/ApexSquadEmbed');
 
 module.exports = {
 	meta: new SlashCommandBuilder()
