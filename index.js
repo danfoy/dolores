@@ -1,9 +1,8 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-const { bot, servers } = require('./config.json');
+const { bot } = require('./config.json');
 const { registerCommands } = require('./commands');
 const { registerEvents } = require('./events');
-const loginQuote = require('./events/LoginQuote');
-const loginEmbed = require('./events/LoginEmbed');
+const { loginQuote } = require('./util');
 
 (async function main() {
 	// Send a random ping quote to announce startup
@@ -23,17 +22,12 @@ const loginEmbed = require('./events/LoginEmbed');
 	// Attempt login
 	try {
 		await client.login(bot.token);
-		const loggingChannel = await client.channels
-			.fetch(servers.find(server => server.name == "home").logging);
-		await loggingChannel.send({embeds: [loginEmbed(client)]});
-
-
+        console.log(`\nLogged into Discord as ${client.user.tag} (${client.user.id})`);
 	} catch (error) {
-		console.error('Discord login failed:', error);
-
-		// Throw rather than `process.exit(1)` is deliberate
+		// Throw rather than `process.exit(1)` is deliberate.
 		// Exiting causes nodemon (development) and systemd (production) to
-		// reload, which risks spamming the API with login attemps.
+		// reload, which risks spamming the API with login attempts.
+		console.error('Discord login failed:', error);
 		throw new Error('Discord login failed');
 	};
 
