@@ -1,4 +1,4 @@
-const { bot } = require('../../config.json');
+const { bot } = require('../config.json');
 const thumbDir = bot.projectRoot + bot.staticRoot + 'Apex/Legends/';
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 

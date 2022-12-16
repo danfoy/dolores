@@ -1,4 +1,4 @@
-const SquadMember = require('../commands/apex/SquadMember');
+const SquadMember = require('./ApexSquadMemberEmbed');
 const { randomFrom } = require('../util');
 const { legends } = require('../commands/apex/legends.json');
 
