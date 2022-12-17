@@ -2,6 +2,7 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const clientData = require('./data/client');
 const registerCommands = require('./registrars/registerCommands');
 const registerEvents = require('./registrars/registerEvents');
+const registerTriggers = require('./registrars/registerTriggers');
 const loginQuote = require('./utils/loginQuote');
 
 (async function main() {
@@ -13,11 +14,13 @@ const loginQuote = require('./utils/loginQuote');
 		intents: [
 			GatewayIntentBits.Guilds,
 			GatewayIntentBits.GuildMessages,
+			GatewayIntentBits.MessageContent,
 		]
 	});
 
 	await registerCommands(client);
 	await registerEvents(client);
+	registerTriggers(client);
 
 	// Attempt login
 	try {

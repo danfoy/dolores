@@ -1,4 +1,3 @@
-const { EmbedBuilder } = require('discord.js');
 const handleCommand = require('../handlers/commandHandler');
 
 /**
@@ -9,12 +8,11 @@ const handleCommand = require('../handlers/commandHandler');
  */
 
 module.exports = {
-	name: 'interactionCreate',
-	async execute(interaction) {
+    name: 'interactionCreate',
+    async execute(interaction) {
 
-        // Only handle commands
         if (!interaction.isCommand()) return;
-        handleCommand(interaction);
+        return handleCommand(interaction);
 
-	},
+    },
 };
