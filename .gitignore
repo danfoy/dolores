@@ -1,6 +1,9 @@
 node_modules/
 Resources/
 config.json
+data/client.js
+data/users.js
+data/servers.js
 
 *.DS_Store
 *.ds_store

@@ -1,5 +1,5 @@
-const { randomFrom } = require('../../util');
-const quotes = require('./quotes');
+const randomFrom = require('../utils/randomFrom');
+const quotes = require('../data/quotes');
 
 
 module.exports = {

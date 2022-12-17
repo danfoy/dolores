@@ -1,4 +1,4 @@
-const { loginQuote } = require('../util');
+const loginQuote = require('../utils/loginQuote');
 
 module.exports = class LoginEmbed {
     constructor (client) {
@@ -12,4 +12,3 @@ module.exports = class LoginEmbed {
         };
     };
 };
-

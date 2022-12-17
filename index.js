@@ -1,8 +1,8 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-const { bot } = require('./config.json');
-const { registerCommands } = require('./commands');
-const { registerEvents } = require('./events');
-const { loginQuote } = require('./util');
+const clientData = require('./data/client');
+const registerCommands = require('./registrars/registerCommands');
+const registerEvents = require('./registrars/registerEvents');
+const loginQuote = require('./utils/loginQuote');
 
 (async function main() {
 	// Send a random ping quote to announce startup
@@ -21,7 +21,7 @@ const { loginQuote } = require('./util');
 
 	// Attempt login
 	try {
-		await client.login(bot.token);
+		await client.login(clientData.token);
         console.log(`\nLogged into Discord as ${client.user.tag} (${client.user.id})`);
 	} catch (error) {
 		// Throw rather than `process.exit(1)` is deliberate.

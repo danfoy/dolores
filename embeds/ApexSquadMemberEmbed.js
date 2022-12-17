@@ -1,6 +1,5 @@
-const { bot } = require('../config.json');
-const thumbDir = bot.projectRoot + bot.staticRoot + 'Apex/Legends/';
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
+const thumbDir = __dirname + '/../Resources/Apex/Legends/';
 
 module.exports = class SquadMember {
     constructor (legend, player, colour) {

@@ -1,4 +1,4 @@
-const { servers } = require('../config.json');
+const servers = require('../data/servers');
 const LoginEmbed = require('../embeds/LoginEmbed');
 
 module.exports = {
@@ -9,8 +9,8 @@ module.exports = {
         // Log login to logging channel(s)
         try {
             const loginEmbed = new LoginEmbed(client);
-            const loggingChannel = await client.channels
-                .fetch(servers.find(server => server.name == "home").logging);
+            const loggingChannelID = servers.find(server => server.alias == "home").channels.logging;
+            const loggingChannel = await client.channels.fetch(loggingChannelID);
             await loggingChannel.send({embeds: [loginEmbed]});
         } catch (error) {
             console.error('Unable to send login message:', error);
