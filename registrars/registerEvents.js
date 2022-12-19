@@ -1,3 +1,4 @@
+const guildCreate = require('../events/guildCreate');
 const interactionCreate = require('../events/interactionCreate');
 const messageCreate = require('../events/messageCreate');
 const ready = require('../events/ready');
@@ -12,6 +13,7 @@ module.exports = function(client) {
 
     // Available events
     const events = [
+        guildCreate,
         interactionCreate,
         messageCreate,
         ready,
