@@ -19,7 +19,7 @@ const loginQuote = require('./utils/loginQuote');
 	});
 
 	await registerCommands(client);
-	await registerEvents(client);
+	registerEvents(client);
 	registerTriggers(client);
 
 	// Attempt login

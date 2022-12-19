@@ -1,5 +1,6 @@
-const { promisify } = require('node:util');
-const glob = promisify(require('glob'));
+const interactionCreate = require('../events/interactionCreate');
+const messageCreate = require('../events/messageCreate');
+const ready = require('../events/ready');
 
 /**
  * Parses event handler files and attaches them to the discordjs client, where
@@ -7,13 +8,14 @@ const glob = promisify(require('glob'));
  *
  * @param {discordjs.Client} client passed-in client
  */
-module.exports = async function(client) {
-    // Get event files
-    const eventFiles = await glob(__dirname + '/../events/*.js');
-    if (!eventFiles.length) throw new Error('Unable to find event handler definitions');
+module.exports = function(client) {
 
-    // Parse event files
-    const events = eventFiles.map(event => event = require(event));
+    // Available events
+    const events = [
+        interactionCreate,
+        messageCreate,
+        ready,
+    ];
 
     // Attach listeners to client
     events.forEach(event => {
@@ -29,7 +31,10 @@ module.exports = async function(client) {
 
     // List of events registered to the client
     const attachedEvents = client.eventNames()
-        .filter(event => !ignoredEvents.includes(event))
+        .filter(event => !ignoredEvents.includes(event));
+
+    // Check custom events are attached to client
+    if (!attachedEvents.length) throw new Error('Unable to attach events to client');
 
     // Log the attached events
     const descriptor = attachedEvents.length === 1 ? 'event' : 'events';
