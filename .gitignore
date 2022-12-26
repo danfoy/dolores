@@ -5,5 +5,7 @@ data/client.js
 data/users.js
 data/servers.js
 
+coverage/
+
 *.DS_Store
 *.ds_store
