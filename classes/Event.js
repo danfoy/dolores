@@ -2,7 +2,7 @@
 /**
  * Represents a discordjs client event response
  */
-class Event {
+export default class Event {
     /**
      * @param {object} meta event configuration
      * @param {string} meta.name name of event emitted
@@ -22,5 +22,3 @@ class Event {
         this._response(client);
     };
 };
-
-module.exports = Event;

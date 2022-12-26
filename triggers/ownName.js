@@ -1,7 +1,7 @@
-const Trigger = require('../classes/Trigger');
-const randomFrom = require('../utils/randomFrom');
-const quotes = require('../data/quotes');
-const clientData = require('../data/client');
+import Trigger from '../classes/Trigger.js';
+import randomFrom from '../utils/randomFrom.js';
+import quotes from '../data/quotes.js';
+import { id } from '../data/client.js';
 
 const meta = {
     name: 'bot-name',
@@ -11,7 +11,7 @@ const meta = {
 const patterns = [
     /dolores/,
     /delores/,
-    new RegExp(`<@${clientData.id}>`),
+    new RegExp(`<@${id}>`),
 ];
 
 async function respond(message) {
@@ -25,4 +25,4 @@ async function respond(message) {
     await message.channel.send(randomFrom(responses))
 };
 
-module.exports = new Trigger(meta, patterns, respond);
+export default new Trigger(meta, patterns, respond);

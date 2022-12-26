@@ -1,4 +1,4 @@
-const randomFrom = require('./randomFrom');
+import randomFrom from './randomFrom.js';
 
 /**
  * Grabs a random Dolores quote suitable for use as a welcome message during
@@ -21,4 +21,4 @@ const quotes = [
     `Is this now?`,
 ];
 const loginQuote = randomFrom(quotes);
-module.exports = loginQuote;
+export default loginQuote;

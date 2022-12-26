@@ -18,7 +18,7 @@ async function handleCommandError(interaction, error) {
     });
 };
 
-module.exports = async function handleCommand(interaction) {
+export default async function handleCommand(interaction) {
     const command = interaction.client.commands.get(interaction.commandName);
 
     // Check the command was found

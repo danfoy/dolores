@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     `Have you ever seen anything so full of splendour?`,
     `I think there may be something wrong with this world`,
     `I think I want to be free`,

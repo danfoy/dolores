@@ -1,7 +1,7 @@
-const guildCreate = require('../events/guildCreate');
-const interactionCreate = require('../events/interactionCreate');
-const messageCreate = require('../events/messageCreate');
-const ready = require('../events/ready');
+import guildCreate from '../events/guildCreate.js';
+import interactionCreate from '../events/interactionCreate.js';
+import messageCreate from '../events/messageCreate.js';
+import ready from '../events/ready.js';
 
 /**
  * Parses event handler files and attaches them to the discordjs client, where
@@ -9,7 +9,7 @@ const ready = require('../events/ready');
  *
  * @param {discordjs.Client} client passed-in client
  */
-module.exports = function(client) {
+export default function(client) {
 
     // Available events
     const events = [

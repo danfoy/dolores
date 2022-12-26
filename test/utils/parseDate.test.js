@@ -1,7 +1,7 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
+import parseDate from '../../utils/parseDate.js';
 
 describe('util.parseDate(target)', function() {
-    const parseDate = require('../../utils/parseDate');
 
     it('throws if target is not supplied', function() {
         expect(()=>parseDate()).to.throw;

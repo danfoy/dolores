@@ -1,8 +1,7 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
+import randomFrom from '../../utils/randomFrom.js';
 
 describe('util.randomFrom(list, quantity, options)', function() {
-
-    const randomFrom = require('../../utils/randomFrom');
 
     it('throws when input is not an array', function() {
         expect(()=>randomFrom({sampletype: "object"})).to.throw;

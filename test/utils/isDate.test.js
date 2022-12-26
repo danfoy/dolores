@@ -1,7 +1,7 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
+import isDate from '../../utils/isDate.js';
 
 describe('util.isDate(target)', function() {
-    const isDate = require('../../utils/isDate');
 
     it('returns true when target is an instance of Date', function() {
         expect(isDate(new Date())).to.be.true;

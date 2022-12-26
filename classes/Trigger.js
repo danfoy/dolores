@@ -1,4 +1,4 @@
-module.exports = class Trigger {
+export default class Trigger {
     constructor(meta, patterns, response) {
         this.name = meta.name;
         this.description = meta.description;

@@ -11,7 +11,7 @@
  *     }]
  * @returns {string|array}
  */
-module.exports = function randomFrom(
+export default function randomFrom(
     source,
     quantity = 1,
     options = {

@@ -1,13 +1,16 @@
-const randomFrom = require('../utils/randomFrom');
-const quotes = require('../data/quotes');
+import randomFrom from '../utils/randomFrom.js';
+import quotes from '../data/quotes.js';
 
+export const meta = {
+	name: 'ping',
+	description: 'Request a response'
+};
 
-module.exports = {
-	meta: {
-		name: 'ping',
-		description: 'Request a response'
-	},
-	async execute(interaction) {
-		await interaction.reply(randomFrom(quotes));
-	},
+export async function execute(interaction) {
+	await interaction.reply(randomFrom(quotes));
+};
+
+export default {
+	meta: meta,
+	execute: execute,
 };

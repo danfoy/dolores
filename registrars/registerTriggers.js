@@ -1,10 +1,10 @@
-const ownName = require('../triggers/ownName');
+import ownName from '../triggers/ownName.js';
 
 const triggers = [
     ownName,
 ];
 
-module.exports = function(client) {
+export default function(client) {
     client.triggers = triggers;
 
     if (!client.triggers) throw new Error('Unable to register triggers');

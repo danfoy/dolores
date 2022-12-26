@@ -1,6 +1,6 @@
-const loginQuote = require('../utils/loginQuote');
+import loginQuote from '../utils/loginQuote.js';
 
-module.exports = class LoginEmbed {
+export default class LoginEmbed {
     constructor (client) {
         this.description = loginQuote,
         this.timestamp = new Date(),

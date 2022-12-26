@@ -4,7 +4,7 @@
  * @param {*} target
  * @returns {boolean}
  */
-module.exports = function isDate(target) {
+export default function isDate(target) {
     return target && // Check date is truthy
         Object.prototype.toString.call(target) === '[object Date]' && // Check target is date object
         target != 'Invalid Date' // Check target is not 'inavlid date';

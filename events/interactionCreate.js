@@ -1,7 +1,7 @@
-const Event = require('../classes/Event');
-const handleCommand = require('../handlers/commandHandler');
+import Event from '../classes/Event.js';
+import handleCommand from '../handlers/commandHandler.js';
 
-module.exports = new Event(
+export default new Event(
     {
         name: 'interactionCreate'
     },

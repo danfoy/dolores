@@ -1,9 +1,9 @@
-const Event = require('../classes/Event');
+import Event from '../classes/Event.js';
 
 /**
  * Emits when the discordjs client joins a server (guild)
  */
-module.exports = new Event(
+export default new Event(
     {
         name: 'guildCreate',
     },

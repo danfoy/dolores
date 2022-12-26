@@ -1,13 +1,13 @@
-const SquadMember = require('./ApexSquadMemberEmbed');
-const randomFrom = require('../utils/randomFrom');
-const { legends } = require('../data/legends.json');
+import SquadMember from './ApexSquadMemberEmbed.js';
+import randomFrom from '../utils/randomFrom.js';
+import legends from '../data/legends.js';
 
 // Squad colours are provided as HEX codes for easy colour matching.
 // They are then converted to an integer to comply with the Discord API v10+
 const squadColours = ['d78d18', '31a1a0', '66a103']
     .map(colour => parseInt(colour, 16));
 
-module.exports = class SquadEmbed {
+export default class SquadEmbed {
     constructor(interaction) {
         const squadSize = interaction.options.getInteger('size');
         const legendSelection = randomFrom(legends, squadSize, {array: true});

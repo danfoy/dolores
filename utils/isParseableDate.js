@@ -1,4 +1,4 @@
-const parseDate = require('./parseDate');
+import parseDate from './parseDate.js';
 
 /**
  * Determine whether it's possible to parse a date from the provided input
@@ -6,7 +6,7 @@ const parseDate = require('./parseDate');
  * @param {*} target
  * @returns {boolean}
  */
-module.exports = function isParseableDate(target) {
+export default function isParseableDate(target) {
     try {
         parseDate(target);
         return true;

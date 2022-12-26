@@ -1,8 +1,7 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
+import loginQuote from '../../utils/loginQuote.js';
 
 describe('util.loginQuote', function() {
-
-    const loginQuote = require('../../utils/loginQuote');
 
     it('returns a string', function() {
         expect(loginQuote).to.be.a('string');

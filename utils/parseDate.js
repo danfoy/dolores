@@ -1,4 +1,4 @@
-const isDate = require('./isDate');
+import isDate from './isDate.js';
 
 /**
  * Get a date object or an error. Returns the input if it's already an instance
@@ -8,7 +8,7 @@ const isDate = require('./isDate');
  * @param {Date|ISO date string} target
  * @returns {Date|Error}
  */
-module.exports = function parseDate(target) {
+export default function parseDate(target) {
     if (!target) throw new Error(`Target date is required and not provided`);
     if(isDate(target)) return target;
     const newDate = new Date(target);

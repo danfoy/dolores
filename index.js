@@ -1,9 +1,9 @@
-const { Client, GatewayIntentBits } = require('discord.js');
-const clientData = require('./data/client');
-const registerCommands = require('./registrars/registerCommands');
-const registerEvents = require('./registrars/registerEvents');
-const registerTriggers = require('./registrars/registerTriggers');
-const loginQuote = require('./utils/loginQuote');
+import { Client, GatewayIntentBits } from 'discord.js';
+import { token } from './data/client.js';
+import registerCommands from './registrars/registerCommands.js';
+import registerEvents from './registrars/registerEvents.js';
+import registerTriggers from './registrars/registerTriggers.js';
+import loginQuote from './utils/loginQuote.js';
 
 (async function main() {
 	// Send a random ping quote to announce startup
@@ -24,7 +24,7 @@ const loginQuote = require('./utils/loginQuote');
 
 	// Attempt login
 	try {
-		await client.login(clientData.token);
+		await client.login(token);
         console.log(`\nLogged into Discord as ${client.user.tag} (${client.user.id})`);
 	} catch (error) {
 		// Throw rather than `process.exit(1)` is deliberate.

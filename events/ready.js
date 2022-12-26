@@ -1,8 +1,8 @@
-const Event = require('../classes/Event');
-const servers = require('../data/servers');
-const LoginEmbed = require('../embeds/LoginEmbed');
+import Event from '../classes/Event.js';
+import servers from '../data/servers.js';
+import LoginEmbed from '../embeds/LoginEmbed.js';
 
-module.exports = new Event(
+export default new Event(
     {
         name: 'ready',
         once: true,

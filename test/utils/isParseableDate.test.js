@@ -1,7 +1,7 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
+import isParseableDate from '../../utils/isParseableDate.js';
 
 describe('util.isParseableDate(target)', function() {
-    const isParseableDate = require('../../utils/isParseableDate');
 
     it('returns true when passed a date', function() {
         expect(isParseableDate(new Date())).to.be.true;
