@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import ownName from '../../triggers/ownName.js';
+import ownName from '../triggers/ownName.js';
 
 describe('ownName trigger', function() {
 

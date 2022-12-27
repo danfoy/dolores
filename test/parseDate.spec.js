@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import parseDate from '../../utils/parseDate.js';
+import parseDate from '../utils/parseDate.js';
 
 describe('util.parseDate(target)', function() {
 

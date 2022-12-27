@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import isDate from '../../utils/isDate.js';
+import isDate from '../utils/isDate.js';
 
 describe('util.isDate(target)', function() {
 

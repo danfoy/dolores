@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import loginQuote from '../../utils/loginQuote.js';
+import loginQuote from '../utils/loginQuote.js';
 
 describe('util.loginQuote', function() {
 

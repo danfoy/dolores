@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import isParseableDate from '../../utils/isParseableDate.js';
+import isParseableDate from '../utils/isParseableDate.js';
 
 describe('util.isParseableDate(target)', function() {
 

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import randomFrom from '../../utils/randomFrom.js';
+import randomFrom from '../utils/randomFrom.js';
 
 describe('util.randomFrom(list, quantity, options)', function() {
 
