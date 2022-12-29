@@ -14,7 +14,7 @@ const patterns = [
     new RegExp(`<@${id}>`),
 ];
 
-async function respond(message) {
+export async function respond(message) {
 
     // Cloning the responses here for easier refactoring if I decide on
     // specific quotes for mentions.
