@@ -1,3 +1,4 @@
+import Command from '../classes/Command.js';
 import randomFrom from '../utils/randomFrom.js';
 import quotes from '../data/quotes.js';
 
@@ -10,7 +11,4 @@ export async function execute(interaction) {
 	await interaction.reply(randomFrom(quotes));
 };
 
-export default {
-	meta: meta,
-	execute: execute,
-};
+export default new Command(meta, execute);

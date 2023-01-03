@@ -1,44 +1,77 @@
-import { REST, Routes } from 'discord.js';
-import servers from '../data/servers.js';
-import { token, id } from '../data/client.js';
-
-import apex from '../commands/apex.js';
-import ping from '../commands/ping.js';
-
-const rest = new REST({ version: '10' }).setToken(token);
-const homeServer = servers.find(server => server.alias === 'home').id;
+import { Routes } from 'discord.js';
 
 /**
- * Attaches command files to the passed-in discord.js Client instance, and
- * sends a PUT request to the Discord API to register slash commands.
+ * Attach `Command`s to the `Client` object as a `Map`.
  *
- * @param {discordjs.Client} client passed-in client
+ * @param {Client} client discord.js Client instance
+ * @param {Array<Command>} commands array of command objects
  */
-export default async function(client) {
+export default function registerCommands(client, commands) {
 
-    const commands = [
-        apex,
-        ping,
-    ];
+    if (typeof client != 'object')
+        throw new Error('No Client supplied');
 
-    const commandData = commands.map(command => command = command.meta);
+    if (!Array.isArray(commands) || commands.length < 1)
+        throw new Error('No Commands supplied');
 
     client.commands = new Map();
-    commands.forEach(command => client.commands.set(command.meta.name, command));
+    commands.forEach(command => client.commands.set(command.data.name, command));
 
-    if (client.commands.size === 0)
+    if (client.commands.size === 0) {
         throw new Error('Unable to load command files onto client');
-
-    // Deploy the commands to the Discord API via REST
-    try {
-
-        await rest.put(Routes.applicationGuildCommands(id, homeServer), { body: commandData })
-        console.log(
-            `Registered ${client.commands.size} ${client.commands.size === 1 ? 'command' : 'commands'}:` +
-            `\t${commands.map(cmd => cmd = `[${cmd.meta.name}]`).join(', ')}`
-        );
-    } catch (error) {
-        console.error('Unable to register commands via REST API:', error);
     };
 
+    const commandsDescriptor = client.commands.size === 1
+        ? 'command'
+        : 'commands'
+    ;
+
+    console.log(
+        `Registered ${client.commands.size} ${commandsDescriptor}:` +
+        `\t${commands.map(cmd => cmd = `[${cmd.data.name}]`).join(', ')}`
+    );
+};
+
+/**
+ * Deploy command files to a specific guild (server)
+ *
+ * Unlike global deployments, deployments to specific guilds is isntant and
+ * doesn't require propogation time. It is therefore useful for deploying
+ * commands to test servers.
+ *
+ * The deployment API has a daily rate limit. Commands only need to be
+ * redeployed when their meta has changed - the execute function is local only.
+ * The REST instance is passed in to allow rate limiting when using the function
+ * within loops.
+ *
+ * @param {REST} rest discord.js REST instance
+ * @param {number} botID Discord user ID
+ * @param {number} serverID target guild ID
+ * @param {array<Command>} commands command objects
+ */
+export async function deployGuildCommands(rest, botID, serverID, commands) {
+    const commandData = commands.map(command => command = command.data);
+
+    try {
+        // Send command to server via REST
+        await rest.put(
+            Routes.applicationGuildCommands(botID, serverID),
+            { body: commandData }
+        );
+
+        const commandsDescriptor = commands.length === 1
+            ? 'command'
+            : 'commands'
+        ;
+
+        // Log success
+        console.log(
+            `Deployed ${commands.length} ${commandsDescriptor} ` +
+            `to ${serverID}:` +
+            `\t${commands.map(cmd => cmd = `[${cmd.data.name}]`).join(', ')}`
+        );
+    } catch (error) {
+        // Log failure but prevent crash
+        console.error('Unable to register commands via REST API:', error);
+    };
 };

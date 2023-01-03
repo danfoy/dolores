@@ -1,20 +1,20 @@
 async function handleCommandError(interaction, error) {
     // Log the error to the console, with trace
-    console.error(error);
     console.info(
         `[${interaction.commandName}]\tcommand error thrown ` +
         `by ${interaction.user.tag} in ` +
         `${interaction.guild.name}#${interaction.channel.name}`
-        );
+    );
+    console.error(error);
 
     // Reply to the interaction user
     await interaction.reply({
         content: `Sorry, I'm not feeling quite myself.`,
-        embeds: [ new EmbedBuilder({
+        embeds: [{
             ephemeral: true,
             title: 'Error processing command',
             description: error.message ? `💀 \`${error.message}\`` : `💀`,
-        })],
+        }],
     });
 };
 

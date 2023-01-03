@@ -7,7 +7,8 @@
   "scripts": {
     "test": "mocha",
     "test:coverage": "c8 npm run test",
-    "stage": "nodemon index.js"
+    "stage": "nodemon index.js",
+    "deploy:commands": "node ./registrars/deployCommands.js"
   },
   "author": "Dan Foy",
   "license": "ISC",
@@ -26,7 +27,8 @@
   "c8": {
     "all": true,
     "reporter": [
-      "text"],
+      "text"
+    ],
     "exclude": [
       "data",
       "test"

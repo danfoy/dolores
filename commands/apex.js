@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
+import Command from '../classes/Command.js';
 import SquadEmbed from '../embeds/ApexSquadEmbed.js';
 
 export const meta = new SlashCommandBuilder()
@@ -27,7 +28,6 @@ export async function execute(interaction) {
     await interaction.reply(new SquadEmbed(interaction));
 };
 
-export default {
-    meta: meta,
-    execute: execute,
-};
+const command = new Command(meta, execute);
+
+export default command;

@@ -5,6 +5,9 @@ import registerEvents from './registrars/registerEvents.js';
 import registerTriggers from './registrars/registerTriggers.js';
 import loginQuote from './utils/loginQuote.js';
 
+import apex from './commands/apex.js';
+import ping from './commands/ping.js';
+
 (async function main() {
 	// Send a random ping quote to announce startup
 	console.log(`\n${loginQuote}\n`);
@@ -18,7 +21,14 @@ import loginQuote from './utils/loginQuote.js';
 		]
 	});
 
-	await registerCommands(client);
+	// Manually import commands.
+	// At some point these will be pulled in from a config object.
+	const commands = [
+		apex,
+		ping,
+	];
+
+	registerCommands(client, commands);
 	registerEvents(client);
 	registerTriggers(client);
 

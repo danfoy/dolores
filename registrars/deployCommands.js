@@ -1,16 +1,16 @@
-import { sync } from 'glob';
-import { REST, Routes } from 'discord.js';
-import { find } from '../data/server.js';
-import { token, id } from '../data/client.js';
+import { REST } from 'discord.js';
+import servers from '../data/servers.js';
+import { token, id as botID } from '../data/client.js';
+import { deployGuildCommands } from './registerCommands.js';
 
-const homeServer = find(server => server.alias === 'home').id;
+import apex from '../commands/apex.js';
+import ping from '../commands/ping.js';
 
-// Create an array of commands from command files
-const commands = sync('./commands/**/*.command.js')
-	.map(file => require(file).meta.toJSON());
-
-// Deploy the commands
 const rest = new REST({ version: '10' }).setToken(token);
-rest.put(Routes.applicationGuildCommands(id, homeServer), { body: commands })
-	.then(() => console.log('Registered slash commands on staging server.'))
-	.catch(error => console.error(error));
+const serverID = servers.find(server => server.alias === 'home').id;
+const commands = [
+    apex,
+    ping,
+];
+
+deployGuildCommands(rest, botID, serverID, commands);
