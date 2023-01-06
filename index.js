@@ -7,6 +7,7 @@ import loginQuote from './utils/loginQuote.js';
 
 import apex from './commands/apex.js';
 import ping from './commands/ping.js';
+import misquote from './commands/misquote.js';
 
 (async function main() {
 	// Send a random ping quote to announce startup
@@ -26,6 +27,7 @@ import ping from './commands/ping.js';
 	const commands = [
 		apex,
 		ping,
+		misquote,
 	];
 
 	registerCommands(client, commands);
