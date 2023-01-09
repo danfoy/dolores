@@ -2,6 +2,7 @@ import guildCreate from '../events/guildCreate.js';
 import interactionCreate from '../events/interactionCreate.js';
 import messageCreate from '../events/messageCreate.js';
 import ready from '../events/ready.js';
+import dbReady from '../events/dbReady.js';
 
 /**
  * Parses event handler files and attaches them to the discordjs client, where
@@ -17,6 +18,7 @@ export default function(client) {
         interactionCreate,
         messageCreate,
         ready,
+        dbReady,
     ];
 
     // Attach listeners to client
