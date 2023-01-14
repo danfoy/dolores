@@ -1,10 +1,11 @@
+.env
+config.js*
+
 node_modules/
 Resources/
-config.json
-data/client.js
-data/users.js
-data/servers.js
+data/
 
+.vscode/
 coverage/
 
 *.DS_Store
