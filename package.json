@@ -9,6 +9,7 @@
     "test:coverage": "c8 npm run test",
     "stage": "nodemon index.js stage",
     "release": "standard-version",
+    "publish": "git push origin --atomic --follow-tags",
     "deploy:commands": "node ./utils/deployCommands.js"
   },
   "author": "Dan Foy",
