@@ -1,7 +1,7 @@
 {
   "name": "@danfoy/dolores",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Discord module for Shodan",
   "main": "index.js",
   "scripts": {
