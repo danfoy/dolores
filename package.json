@@ -52,23 +52,23 @@
       },
       {
         "type": "build",
-        "section": "Plumbing"
+        "section": "Backend"
       },
       {
         "type": "docs",
-        "section": "Plumbing"
+        "section": "Backend"
       },
       {
         "type": "style",
-        "section": "Plumbing"
+        "section": "Backend"
       },
       {
         "type": "refactor",
-        "section": "Plumbing"
+        "section": "Backend"
       },
       {
         "type": "test",
-        "section": "Plumbing"
+        "section": "Backend"
       }
     ]
   }
