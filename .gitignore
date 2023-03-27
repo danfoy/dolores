@@ -5,7 +5,6 @@ node_modules/
 Resources/
 data/
 
-.vscode/
 coverage/
 
 *.DS_Store
