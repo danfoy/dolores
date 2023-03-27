@@ -1,7 +1,7 @@
 {
   "name": "dolores",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Discord module for Shodan",
   "main": "index.js",
   "scripts": {
