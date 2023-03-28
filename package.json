@@ -55,23 +55,27 @@
       },
       {
         "type": "build",
-        "section": "Backend"
+        "section": "Plumbing"
       },
       {
         "type": "docs",
-        "section": "Backend"
+        "section": "Plumbing"
       },
       {
         "type": "style",
-        "section": "Backend"
+        "section": "Plumbing"
       },
       {
         "type": "refactor",
-        "section": "Backend"
+        "section": "Plumbing"
       },
       {
         "type": "test",
-        "section": "Backend"
+        "section": "Plumbing"
+      },
+      {
+        "type": "chore",
+        "section": "Plumbing"
       }
     ]
   }
