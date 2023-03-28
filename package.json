@@ -14,7 +14,10 @@
   },
   "author": "Dan Foy",
   "license": "MIT",
-  "repository": "https://github.com/danfoy/dolores.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danfoy/dolores.git"
+  },
   "devDependencies": {
     "c8": "^7.12.0",
     "chai": "^4.3.4",
